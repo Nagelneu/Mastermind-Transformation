@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>NagelNEU – Die Premium 21‑Tage Transformation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', 'Poppins', system-ui, sans-serif;
+      background: linear-gradient(145deg, #e2f0ea 0%, #cde4db 100%);
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+    .container { max-width: 1020px; margin: 0 auto; }
+    .hero-banner {
+      width: 100%; margin-bottom: 28px; border-radius: 2.5rem; overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.18); border: 1px solid rgba(255,255,255,0.7);
+    }
+    .hero-banner img { width: 100%; display: block; object-fit: cover; }
+    .card {
+      background: rgba(255,255,255,0.98); backdrop-filter: blur(2px);
+      border-radius: 2.5rem; box-shadow: 0 25px 45px -12px rgba(0,0,0,0.25);
+      padding: 32px 28px; margin-bottom: 28px; border: 1px solid rgba(255,255,255,0.6);
+    }
+    h1 {
+      font-size: 2.4rem; background: linear-gradient(135deg, #1e4b3c, #2b9a74);
+      background-clip: text; -webkit-background-clip: text; color: transparent;
+      letter-spacing: -0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .sub {
+      color: #2b6b55; font-weight: 600; margin-bottom: 24px;
+      border-left: 5px solid #2b7a5e; padding-left: 20px; font-size: 1.1rem;
+    }
+    .btn-reset {
+      background: #e07c5f; color: white; border: none; padding: 12px 28px;
+      border-radius: 60px; font-size: 1rem; font-weight: 700; cursor: pointer;
+      transition: 0.2s; margin-top: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .btn-reset:hover { background: #c55a3a; transform: translateY(-2px); }
+    .intro-text { font-size: 1rem; line-height: 1.65; color: #1e3a30; }
+    .intro-text h3 {
+      font-size: 1.6rem; color: #1e4b3c; margin: 24px 0 12px 0;
+      border-left: 5px solid #f3b33d; padding-left: 18px;
+    }
+    .intro-text h3:first-of-type { margin-top: 0; }
+    .intro-text h4 { font-size: 1.2rem; color: #2b7a5e; margin: 20px 0 10px 0; }
+    .intro-text .highlight { background: #fef0cf; padding: 4px 12px; border-radius: 40px; font-weight: 600; display: inline-block; }
+    .intro-text .gummi { background: #ebf3ef; border-left: 5px solid #e09d32; padding: 18px; border-radius: 1.2rem; margin: 20px 0; font-weight: 500; }
+    .intro-text p { margin-bottom: 14px; }
+    .intro-text hr { margin: 24px 0; border: 0; height: 2px; background: linear-gradient(90deg, #cce3da, transparent); }
+    .milestone-section { margin-bottom: 28px; }
+    .milestone-card {
+      background: #fef9e6; border-left: 6px solid #f3b33d; border-radius: 1.5rem;
+      padding: 20px; margin-bottom: 18px; transition: 0.2s;
+    }
+    .milestone-card h3 { color: #c97e00; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 1.3rem; }
+    .badge { background: #f3b33d; color: #3b2a1f; font-size: 0.75rem; padding: 4px 14px; border-radius: 40px; font-weight: bold; }
+    .milestone-card iframe { width: 100%; border-radius: 24px; margin-top: 12px; aspect-ratio: 16/9; border: none; }
+    .milestone-locked { opacity: 0.6; filter: grayscale(0.2); background: #ece8df; }
+    .day-list { display: flex; flex-direction: column; gap: 20px; }
+    .day-card { background: white; border-radius: 1.8rem; border: 1px solid #d4e8df; overflow: hidden; box-shadow: 0 5px 12px rgba(0,0,0,0.05); }
+    .day-header { display: flex; align-items: center; gap: 16px; padding: 18px 24px; background: #fefefb; cursor: pointer; transition: 0.1s; }
+    .day-header:hover { background: #f0f7f3; }
+    .day-number { font-weight: 800; font-size: 1.5rem; background: #dff0e9; width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 60px; color: #1e4b3c; }
+    .day-title { flex: 1; font-weight: 700; font-size: 1.2rem; color: #15382e; }
+    .day-check { width: 28px; height: 28px; cursor: pointer; accent-color: #2c7a5e; }
+    .day-content { padding: 0 24px 28px 24px; display: none; background: white; border-top: 1px solid #e5f0ea; }
+    .day-content.show { display: block; }
+    .task-text { background: #f5faf7; padding: 20px; border-radius: 1.5rem; margin: 16px 0; line-height: 1.6; color: #1f3e34; white-space: pre-wrap; }
+    .video-wrapper { margin: 20px 0 0; }
+    iframe { width: 100%; aspect-ratio: 16/9; border: none; border-radius: 20px; }
+    progress { width: 100%; height: 22px; border-radius: 30px; overflow: hidden; margin: 18px 0; }
+    progress::-webkit-progress-bar { background-color: #e2ece6; border-radius: 30px; }
+    progress::-webkit-progress-value { background-color: #2c7a5e; border-radius: 30px; }
+    .footer { text-align: center; font-size: 0.85rem; color: #3d6b5c; margin: 40px 0 20px; line-height: 1.5; }
+    h2 { font-size: 1.8rem; margin-bottom: 12px; color: #1c5a48; }
+    .placeholder-hint { background: #fff3e0; padding: 12px 16px; border-radius: 20px; font-size: 0.9rem; color: #b45f1b; margin-top: 12px; font-style: italic; border-left: 4px solid #f3b33d; }
+    .quiz-block { background: linear-gradient(120deg, #fef7e0, #fff9ef); border-radius: 1.5rem; padding: 20px; margin: 20px 0 12px; border: 1px solid #fae8c3; }
+    .quiz-question { font-weight: 700; font-size: 1.15rem; color: #ab6f2c; margin-bottom: 14px; }
+    .quiz-options { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+    .quiz-option { background: white; border-radius: 60px; padding: 10px 18px; cursor: pointer; border: 1px solid #e2d8c0; transition: 0.15s; font-weight: 500; }
+    .quiz-option:hover { background: #fef0cf; border-color: #c9a96b; transform: translateX(4px); }
+    .quiz-feedback { margin-top: 12px; font-weight: 500; padding: 10px; border-radius: 30px; text-align: center; }
+    .quiz-correct { background: #c8e6d9; color: #1c6148; }
+    .quiz-wrong { background: #ffe1de; color: #b34e3a; }
+    .email-link { color: #2b7a5e; text-decoration: none; font-weight: 600; border-bottom: 1px dashed #2b7a5e; }
+    .email-link:hover { color: #e07c5f; border-bottom-color: #e07c5f; }
+    @media (max-width: 550px) {
+      .card { padding: 20px; }
+      .day-header { gap: 10px; padding: 12px 16px; }
+      .day-number { width: 42px; height: 42px; font-size: 1.2rem; }
+      .day-title { font-size: 1rem; }
+      .intro-text h3 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER-BANNER mit Ihrem original Bild Channel_Banner.jpg -->
+  <div class="hero-banner">
+    <img src="Channel_Banner.jpg" alt="NagelNEU Banner – Du bist nicht allein. Liebe deine Hände. NagelNEU · In 21 Tagen neue Gewohnheiten">
+  </div>
+
+  <!-- KOPF -->
+  <div class="card">
+    <h1>💅 NagelNEU <span style="font-size:0.9rem;background:#e09d32;color:white;padding:4px 12px;border-radius:60px;">Premium</span></h1>
+    <div class="sub">Deine 21‑Tage‑Transformation – nie wieder Nägelkauen. Mit täglichen Challenges, psychologischen Methoden und Quizzen!</div>
+    <button id="resetProgressBtn" class="btn-reset">🔄 Transformation zurücksetzen</button>
+  </div>
+
+  <!-- EINLEITUNG FRANK ZIMMERMANN (vollständig) -->
+  <div class="card intro-text">
+    <h3>✨ Herzlich willkommen zu deiner NagelNEU Transformation!</h3>
+    <p><strong>( Das hier ist kein Coaching – das hier ist eine ganzheitliche Transformation.)</strong> Hier gibt es keinen Zufall. Es ist alles verständlich, Seite für Seite klar definiert und aufgebaut. Rein ins Labyrinth – gemeinsam finden wir hier deinen Ausgang. <strong>Nie wieder Fingernägel kauen.</strong></p>
+    <p>Hiermit heiße ich dich willkommen!</p>
+    <div class="gummi"><strong>🔔 Schockiere dein Gehirn:</strong> Trag 21 Tage lang ein Gummiband am Handgelenk – jedes Mal, wenn du ans Kauen denkst, schnippst du es leicht: <strong>„Nein. Neu. Jetzt.“</strong></div>
+    <p>Hey, Ihr Lieben, in diesem Artikel möchte ich euch erzählen, wie ich es geschafft habe, mit dem Nägelkauen aufzuhören. Denn auch ich war noch vor Kurzem davon betroffen und wusste nicht, wie ich es schaffen kann, das Nägelkauen sein zu lassen.</p>
+    <p><strong>Los geht‘s!</strong> Ein herzliches Dankeschön dafür, dass Du diese wegweisende Transformation in Dein Leben geholt hast. Du hast den ersten Schritt getan – und was für einen!</p>
+    <hr><h4>📖 Das Prinzip der Freiwilligkeit</h4>
+    <p>Kennt ihr das Prinzip der Freiwilligkeit? Jeder Mensch, auch ihr, ist mit einem freien Willen ausgestattet. Vielleicht denkt ihr euch jetzt: „Was redet der Typ da?“ Aber hört mir zu, denn das ist wichtiger, als es auf den ersten Blick scheint.</p>
+    <p>Freiwilligkeit bedeutet, dass jeder von uns denken, fühlen und tun kann, was er möchte. Es bedeutet aber auch, dass wir nicht die Opfer unserer Gedanken sein dürfen, sondern die Meister unserer Gedanken werden sollten.</p>
+    <p>Stellt euch mal vor, jeder Mensch kann denken, was er will – auch du. Das ist nicht selbstverständlich. Diese Fähigkeit schenkt uns eine ungeheure Freiheit, und Freiheit bedeutet Macht.</p>
+    <p>Natürlich hat das auch Konsequenzen. Nur Freiheit ist immer mit Verantwortung verbunden. Verantwortung für das, was wir denken, fühlen und tun. Das Prinzip der Freiwilligkeit zeigt uns, dass die Zukunft nicht festgelegt ist. Denn wenn jeder Mensch sein Denken verändern kann, kann er auch seine Zukunft verändern.</p>
+    <p>Und genau das macht alles möglich:<br>🌟 Ein Leben ohne Nägelkauen ist möglich.<br>🌟 Ein erfülltes Leben ist möglich.<br>🌟 Grenzenlose Energie ist möglich.</p>
+    <hr><h4>💪 Was du gleich erleben wirst</h4>
+    <p>In den kommenden 21 Tagen wirst du gemeinsam mit mir eine komplette Transformation im Hinblick auf deine bisherige Denkweise durchmachen. Du wirst nicht einfach aufhören zu kauen, nur weil du darüber nachdenkst – es passiert nicht von heute auf morgen. Der wahre Schlüssel liegt in deinem tiefen Fokus auf dem Problem und der Ursache, in deinem unerschütterlichen Willen, endlich Schluss zu machen, und der kontinuierlichen Arbeit an dir selbst.</p>
+    <p><span class="highlight">Erfolg hat drei Buchstaben: TUN.</span> Du musst allerdings schon einen eigenen Willen entwickeln und die Sache durchziehen. Einige brauchen 7 Tage, einige drei Wochen, andere länger oder kürzer. Das ist dein TUN – und ich bin stolz auf dich, dass wir diesen Schritt gemeinsam gehen. Danke für dein Vertrauen – und jetzt los!</p>
+    <p><em>„Du bist die Macht hinter deinen Gedanken – nimm das Steuer in die Hand! Jeder Moment ist deine Wahl: Lass Chaos nicht regieren, sondern verwandle es in deine Stärke. Feiere jeden Schritt – denn selbst der kleinste Sieg ist ein Beweis: Du wächst. Du kämpfst. Du veränderst dich.“</em></p>
+    <p style="margin-top:15px;">Dein<br><strong>Frank Zimmermann</strong></p>
+  </div>
+
+  <!-- MEILENSTEIN-VIDEOS -->
+  <div class="card milestone-section">
+    <h2>🏆 Deine Erfolgsvideos</h2>
+    <div id="milestoneVideosContainer"></div>
+  </div>
+
+  <!-- TÄGLICHE QUESTS -->
+  <div class="card">
+    <h2>📋 Deine täglichen Quests</h2>
+    <progress id="globalProgress" value="0" max="21"></progress>
+    <div id="dayList" class="day-list"></div>
+  </div>
+
+  <div class="footer">
+    ⚡ Jeden Tag eine kleine Übung – du schaffst das!<br>
+    Copyright by Frank Zimmermann | NagelNEU 2026<br>
+    📧 Kontakt: <a href="mailto:fingernagelkauen@gmail.com" class="email-link">fingernagelkauen@gmail.com</a>
+  </div>
+</div>
+
+<script>
+// --------------------------------------------------------------
+// 1. Tägliche Aufgaben – komplett mit allen 21 langen Texten
+// --------------------------------------------------------------
+const daysData = [
+  { title: "Bewusstsein schaffen – Gummiband-Trick", task: `Heute beginnt deine bewusste Veränderung. Ab jetzt beobachtest du nicht nur deine Gewohnheit – du kontrollierst sie aktiv. Das Gummiband an deinem Handgelenk ist kein Zeichen von Schwäche, sondern dein persönlicher Erinnerungsanker. Immer wenn deine Finger Richtung Mund wandern, schnippst du leicht dagegen und holst dich zurück in den Moment. Genau dieser kleine Augenblick verändert alles. Denn Nägelkauen passiert oft unbewusst. Du denkst nach, bist gestresst, gelangweilt oder angespannt – und plötzlich passiert es automatisch. Doch heute beginnt ein neues Kapitel. Du trainierst dein Gehirn darauf, bewusster zu werden. Jeder erkannte Impuls ist ein Sieg. Jeder gestoppte Moment stärkt deine Kontrolle. Menschen unterschätzen, wie mächtig Bewusstsein ist. Aber sobald du deine Muster erkennst, verlieren sie ihre Macht über dich. Du musst nicht perfekt sein. Du musst nur anfangen, dich selbst zu beobachten. Genau das machst du heute. Mit jedem Mal, in dem du den Automatismus unterbrichst, stärkst du dein neues Ich. Ein Mensch, der nicht mehr fremdgesteuert reagiert, sondern selbst entscheidet. Deine Veränderung beginnt nicht morgen. Sie beginnt genau jetzt.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Ersatzhandlung etablieren", task: `Dein Gehirn liebt Gewohnheiten. Deshalb reicht es nicht aus, einfach nur aufzuhören. Du ersetzt die alte Handlung durch etwas Neues, das deinem Körper Sicherheit gibt. Immer wenn der Drang kommt, greifst du bewusst zu deiner Ersatzhandlung. Vielleicht drückst du einen Stressball, spielst mit einem Ring, massierst deine Fingerspitzen oder trinkst einen Schluck Wasser. Wichtig ist nicht, was du auswählst. Wichtig ist, dass dein Gehirn lernt: Es gibt eine neue Reaktion. Heute erschaffst du einen neuen Automatismus. Genau dadurch entsteht langfristige Veränderung. Viele Menschen scheitern, weil sie nur versuchen, etwas zu unterdrücken. Doch echte Transformation entsteht durch Umlenkung. Du kämpfst nicht gegen dich selbst. Du führst dich neu. Und jedes Mal, wenn du deine Ersatzhandlung benutzt, baust du eine neue Verbindung im Gehirn auf. Du wirst ruhiger, bewusster und kontrollierter. Denk daran: Gewohnheiten verschwinden nicht einfach. Sie werden ersetzt. Deshalb ist jede kleine Wiederholung heute wertvoll. Auch wenn es sich noch ungewohnt anfühlt – dein Gehirn lernt bereits. Mit jeder bewussten Entscheidung stärkst du deine neue Identität. Du bist nicht mehr Opfer deiner Gewohnheit. Du wirst zum Gestalter deiner Veränderung.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Trigger erkennen + QUIZ", task: `Heute wirst du zum Detektiv deiner eigenen Gewohnheiten. Wann genau entsteht der Drang zu kauen? Beim Arbeiten? Beim Fernsehen? Während Telefonaten? Oder immer dann, wenn Stress auftaucht? Deine Trigger sind keine Schwäche. Sie sind Hinweise. Sobald du erkennst, was deine Gewohnheit auslöst, bekommst du Kontrolle zurück. Viele Menschen leben jahrelang im Autopilot-Modus. Sie reagieren, ohne zu verstehen warum. Doch du gehst heute einen anderen Weg. Du beobachtest bewusst deine Gedanken, Gefühle und Situationen. Vielleicht merkst du, dass Langeweile ein Auslöser ist. Vielleicht ist es Nervosität oder innerer Druck. Genau diese Erkenntnisse sind Gold wert. Denn Veränderung beginnt immer mit Klarheit. Schreib deine wichtigsten Trigger auf und erkenne die Muster dahinter. Jeder erkannte Zusammenhang macht dich stärker. Du bist nicht hilflos. Du lernst gerade, dich selbst besser zu verstehen. Das ist echte Selbstentwicklung. Und genau deshalb bist du bereits weiter als viele andere. Heute geht es nicht darum, perfekt zu reagieren. Heute geht es darum, aufmerksam zu werden. Dein Bewusstsein wächst. Deine Kontrolle wächst. Und mit jedem Tag wird dein neues Verhalten natürlicher. Veränderung ist kein Zufall. Sie ist das Ergebnis bewusster Entscheidungen.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Nagelpflege-Routine", task: `Heute behandelst du deine Hände mit Wertschätzung. Nicht aus Eitelkeit, sondern aus Respekt vor dir selbst. Deine Nägel erzählen eine Geschichte – und ab heute beginnt eine neue. Nimm dir bewusst Zeit für Pflege. Feile deine Nägel vorsichtig, creme deine Hände ein und achte auf jedes kleine Detail. Diese Routine ist mehr als nur Kosmetik. Sie ist ein Signal an dein Unterbewusstsein: Ich kümmere mich um mich selbst. Menschen zerstören selten bewusst etwas, auf das sie stolz sind. Genau deshalb ist Pflege so kraftvoll. Je schöner und gesünder deine Hände werden, desto stärker wird dein Wunsch, sie zu schützen. Heute erschaffst du eine emotionale Verbindung zu deinem Fortschritt. Du beginnst, deine Hände mit anderen Augen zu sehen. Nicht mehr als Problemzone, sondern als Zeichen deiner Entwicklung. Vielleicht bemerkst du bereits kleine Veränderungen. Vielleicht sehen deine Nägel etwas ruhiger aus oder deine Haut fühlt sich besser an. Feiere diese Details. Kleine Fortschritte führen zu großen Veränderungen. Deine neue Routine stärkt nicht nur deine Nägel, sondern auch dein Selbstwertgefühl. Du investierst heute bewusst Energie in dich selbst – und genau das verändert langfristig deine Identität.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Achtsamkeitsübung – Atmung", task: `Heute lernst du, Ruhe in dir selbst zu finden. Viele Menschen kauen nicht wegen ihrer Nägel, sondern wegen innerer Spannung. Genau deshalb ist Atmung so wichtig. Wenn du bewusst langsam atmest, beruhigst du dein Nervensystem. Du sendest deinem Körper das Signal: Alles ist okay. Schließe für einen Moment die Augen. Atme tief durch die Nase ein und langsam wieder aus. Spüre, wie sich dein Körper entspannt. Genau dieser Moment schenkt dir Kontrolle zurück. Nägelkauen entsteht oft impulsiv. Doch zwischen Reiz und Handlung liegt ein kleiner Raum. Und genau dort entsteht Freiheit. Heute trainierst du, diesen Raum größer werden zu lassen. Du reagierst nicht mehr automatisch. Du entscheidest bewusst. Mit jedem Atemzug stärkst du deine innere Stabilität. Menschen suchen oft im Außen nach Kontrolle, obwohl sie bereits alles in sich tragen. Deine Atmung begleitet dich immer. Sie ist dein Anker in stressigen Momenten. Nutze sie bewusst. Vielleicht fühlt sich das heute ungewohnt an. Das ist normal. Neue Gewohnheiten brauchen Wiederholung. Doch jedes Mal, wenn du dich statt fürs Kauen fürs Atmen entscheidest, veränderst du deine Zukunft. Ruhe ist keine Schwäche. Ruhe ist Kontrolle.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Belohnungssystem + QUIZ", task: `Dein Gehirn liebt Belohnungen. Deshalb wird Veränderung leichter, wenn du Fortschritte sichtbar machst. Heute erschaffst du dein persönliches Belohnungssystem. Für jeden Tag ohne Nägelkauen sammelst du Punkte, kleine Erfolge oder besondere Momente. Vielleicht gönnst du dir einen Kaffee, ein schönes Produkt oder etwas Zeit nur für dich. Wichtig ist: Dein Gehirn verbindet positives Verhalten mit positiven Gefühlen. Genau dadurch entstehen neue Gewohnheiten schneller. Viele Menschen konzentrieren sich nur auf Fehler. Doch Erfolg wächst dort, wo Anerkennung entsteht. Deshalb feierst du heute bewusst jeden kleinen Fortschritt. Selbst ein einzelner kontrollierter Moment zählt. Deine Veränderung muss sich gut anfühlen. Denn Motivation entsteht nicht durch Druck, sondern durch positive Erfahrungen. Wenn du stolz auf dich bist, stärkst du automatisch deine Disziplin. Und genau das passiert heute. Du trainierst dein Gehirn darauf, Erfolg wahrzunehmen. Das verändert deine innere Haltung. Du bist nicht mehr die Person, die ständig scheitert. Du wirst jemand, der sich entwickelt. Denk daran: Große Veränderungen bestehen aus vielen kleinen Erfolgen. Und jeder einzelne davon verdient Anerkennung.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Spiegel-Methode & Wochen-Reflexion", task: `Heute schaust du dir selbst ehrlich in die Augen. Nicht kritisch. Nicht verurteilend. Sondern bewusst. Stell dich vor den Spiegel und erkenne an, was du bereits geschafft hast. Sieben Tage bewusste Veränderung sind mehr, als viele Menschen jemals versuchen. Vielleicht war nicht jeder Tag perfekt. Aber du bist drangeblieben. Genau das zählt. Die Spiegel-Methode hilft dir, eine neue Verbindung zu dir selbst aufzubauen. Sprich dir bewusst positive Sätze zu. Sage laut: Ich werde stärker. Ich habe Kontrolle. Ich schaffe das. Anfangs fühlt sich das vielleicht ungewohnt an, doch dein Gehirn hört jedes Wort mit. Gedanken formen Gefühle. Gefühle formen Verhalten. Deshalb beginnt echte Veränderung immer innen. Heute reflektierst du deine erste Woche. Was lief gut? Wo waren Schwierigkeiten? Welche Situationen waren besonders stark? Schreib deine Erkenntnisse auf. Jeder reflektierte Moment macht dich bewusster. Du erkennst, dass Fortschritt nicht Perfektion bedeutet. Fortschritt bedeutet Wiederholung. Wieder aufstehen. Wieder weitermachen. Genau das trainierst du gerade. Und genau deshalb wächst dein Selbstvertrauen. Du bist längst nicht mehr dieselbe Person wie vor sieben Tagen. Deine neue Identität beginnt sichtbar zu werden.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Bitterer Nagellack / Gelnägel", task: `Heute setzt du eine klare Grenze zwischen Impuls und Handlung. Bitterer Nagellack oder Gelnägel helfen dir dabei, automatische Bewegungen bewusst zu unterbrechen. Viele Gewohnheiten leben davon, dass sie ohne Nachdenken passieren. Doch sobald etwas den Ablauf stoppt, entsteht Bewusstsein. Genau deshalb funktioniert diese Methode so gut. Der unangenehme Geschmack oder die feste Oberfläche erinnert dich sofort an dein Ziel. Du holst dich zurück in den Moment. Das ist keine Strafe. Es ist Unterstützung. Du baust heute ein Schutzsystem für deinen Erfolg auf. Manchmal braucht Veränderung nicht nur mentale Stärke, sondern auch clevere Strategien. Genau darum geht es heute. Du machst es deinem alten Muster schwerer und deinem neuen Verhalten leichter. Menschen unterschätzen oft, wie wirkungsvoll kleine Hindernisse sein können. Doch genau diese Sekunden entscheiden oft über Erfolg oder Rückfall. Jeder gestoppte Impuls stärkt dein neues Verhalten. Mit jedem Tag wird dein Gehirn lernen, anders zu reagieren. Du wirst bewusster, ruhiger und kontrollierter. Und genau dadurch entsteht echte Freiheit von alten Automatismen.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Abstandstechnik + QUIZ", task: `Heute lernst du eine der wichtigsten Fähigkeiten überhaupt: inneren Abstand. Wenn der Drang kommt, musst du nicht sofort reagieren. Du kannst beobachten. Genau dort beginnt Selbstkontrolle. Viele Menschen glauben, sie müssten jedem Impuls folgen. Doch das stimmt nicht. Gedanken und Gefühle sind wie Wellen. Sie kommen und gehen. Heute trainierst du, einen kleinen Moment Abstand zwischen Reiz und Handlung zu schaffen. Sobald du den Impuls bemerkst, stoppst du kurz. Atme tief ein. Zähle langsam bis fünf. Beobachte einfach, was passiert. Oft verliert der Drang bereits nach wenigen Sekunden an Stärke. Genau das ist mentale Freiheit. Du erkennst: Du bist nicht deine Gewohnheit. Du bist der Mensch, der entscheidet. Diese Technik wirkt simpel, doch sie verändert dein Gehirn enorm. Du trainierst bewusste Reaktionen statt automatischer Muster. Und jedes Mal, wenn du dir diesen Abstand erlaubst, stärkst du deine innere Kontrolle. Vielleicht klappt es heute noch nicht perfekt. Das muss es auch nicht. Entscheidend ist die Wiederholung. Jeder bewusst unterbrochene Impuls macht dich stärker. Veränderung entsteht nicht in einem einzigen Moment. Sie entsteht durch viele kleine Entscheidungen.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Visualisierung", task: `Heute nutzt du die Kraft deiner Vorstellung. Schließe für einen Moment die Augen und sieh dich selbst mit gesunden, gepflegten Händen. Stell dir vor, wie stolz du dich fühlst. Wie sicher du Menschen die Hand gibst. Wie ruhig und kontrolliert du in stressigen Situationen bleibst. Dein Gehirn reagiert erstaunlich stark auf innere Bilder. Je klarer du deine Zukunft siehst, desto stärker richtet sich dein Verhalten darauf aus. Genau deshalb ist Visualisierung so mächtig. Du programmierst heute dein Unterbewusstsein neu. Viele erfolgreiche Menschen nutzen diese Technik bewusst. Denn bevor etwas Realität wird, entsteht es oft zuerst im Kopf. Wichtig ist, dass du nicht nur das Ergebnis siehst, sondern auch das Gefühl dahinter. Stolz. Ruhe. Freiheit. Selbstvertrauen. Genau diese Emotionen verstärken deine Motivation. Vielleicht erscheint dir deine Veränderung manchmal noch weit entfernt. Doch jede große Entwicklung beginnt mit einer inneren Entscheidung. Heute erschaffst du dieses neue Selbstbild bewusst. Wiederhole deine Visualisierung mehrmals am Tag. Je öfter du sie fühlst, desto natürlicher wird sie für dein Gehirn. Und genau dadurch wird dein neues Verhalten Schritt für Schritt Realität.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Notfallkarte", task: `Heute bereitest du dich bewusst auf schwierige Momente vor. Denn echte Stärke entsteht nicht dann, wenn alles leicht ist, sondern wenn Herausforderungen auftauchen. Genau deshalb erstellst du heute deine persönliche Notfallkarte. Darauf schreibst du deine wichtigsten Gründe aufzuhören, motivierende Sätze und konkrete Sofort-Strategien. Zum Beispiel: Tief atmen. Hände beschäftigen. Wasser trinken. Kurz spazieren gehen. Diese Karte wird dein Rettungsanker in stressigen Situationen. Wenn der Impuls plötzlich auftaucht, musst du nicht überlegen. Du hast bereits einen Plan. Genau das gibt Sicherheit. Viele Rückfälle passieren aus Überforderung. Doch Vorbereitung schafft Kontrolle. Vielleicht denkst du heute noch: So schlimm wird es schon nicht werden. Aber genau in schwierigen Momenten entscheidet sich dein Erfolg. Deshalb bist du vorbereitet. Und allein dieses Gefühl macht dich stärker. Deine Notfallkarte erinnert dich daran, warum du begonnen hast. Sie erinnert dich daran, wie weit du bereits gekommen bist. Und sie zeigt dir: Du bist dem Drang nicht ausgeliefert. Du kannst handeln. Bewusst. Ruhig. Kontrolliert. Jeder Mensch braucht Werkzeuge für schwierige Momente. Heute erschaffst du deine eigenen.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Social Support + QUIZ", task: `Heute erkennst du, wie kraftvoll Unterstützung sein kann. Veränderung muss kein einsamer Kampf sein. Menschen wachsen oft schneller, wenn sie sich verstanden und unterstützt fühlen. Deshalb öffnest du dich heute bewusst für Hilfe. Vielleicht erzählst du einem Freund, deiner Partnerin oder jemandem aus deiner Familie von deinem Ziel. Nicht, um Druck zu erzeugen, sondern um Motivation aufzubauen. Unterstützung erinnert dich daran, dass du nicht alleine bist. Oft reicht schon ein einziges ehrliches Gespräch, um neue Kraft zu bekommen. Menschen, die an dich glauben, stärken automatisch auch deinen Glauben an dich selbst. Und genau das brauchst du auf deinem Weg. Vielleicht bekommst du Zuspruch, Motivation oder einfach nur Verständnis. All das hilft deinem Gehirn, dranzubleiben. Gleichzeitig lernst du heute, dich selbst ernst zu nehmen. Dein Ziel ist wichtig. Deine Veränderung ist wichtig. Du darfst stolz darauf sein, daran zu arbeiten. Viele Menschen verstecken ihre Unsicherheiten. Doch echte Stärke entsteht durch Ehrlichkeit. Je mehr Unterstützung du zulässt, desto leichter wird deine Entwicklung. Du musst nicht perfekt sein. Du musst nur weitermachen. Und manchmal geht das gemeinsam leichter als alleine.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Entspannungsaudio", task: `Heute schenkst du deinem Körper und deinem Geist echte Ruhe. Viele Gewohnheiten entstehen aus innerer Anspannung. Deshalb ist Entspannung keine Nebensache, sondern ein zentraler Schlüssel deiner Veränderung. Höre heute bewusst dein Entspannungsaudio (du kannst eine ruhige Meditation oder Naturgeräusche nutzen) und erlaube deinem Nervensystem, herunterzufahren. Während andere Stress unbewusst wegkauen, lernst du eine neue Form der Regulation. Du atmest ruhiger. Deine Gedanken werden langsamer. Dein Körper entspannt sich. Genau in diesen Momenten erkennt dein Gehirn: Sicherheit ist auch ohne Nägelkauen möglich. Das verändert langfristig deine Automatismen. Vielleicht bemerkst du heute zum ersten Mal, wie viel Spannung normalerweise in dir steckt. Das ist keine Schwäche. Das ist Bewusstsein. Und Bewusstsein führt zu Veränderung. Je öfter du deinem Körper echte Ruhe gibst, desto weniger wird er nach alten Mustern verlangen. Entspannung ist Training. Sie macht dich mental stabiler. Nutze das Audio nicht nur einmal, sondern immer wieder. Besonders in schwierigen Situationen. Mit jeder Wiederholung stärkst du deine innere Balance. Und genau dadurch wächst deine Kontrolle im Alltag.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Halbzeit – Rückfallprävention", task: `Heute erreichst du die Halbzeit deiner Transformation. Vierzehn Tage bewusste Veränderung sind ein riesiger Erfolg. Doch genau jetzt wird etwas besonders wichtig: Rückfallprävention. Viele Menschen glauben, ein Rückfall zerstöre alles. Das stimmt nicht. Ein einzelner Moment definiert niemals deinen gesamten Weg. Entscheidend ist, wie du danach weitermachst. Heute lernst du, Rückschläge anders zu betrachten. Nicht als Niederlage, sondern als Lernmoment. Vielleicht gab es Situationen, in denen du schwach geworden bist. Das bedeutet nicht, dass du versagt hast. Es bedeutet nur, dass du menschlich bist. Echte Stärke zeigt sich darin, wieder aufzustehen. Genau deshalb reflektierst du heute bewusst deine schwierigsten Momente. Was hat dich getriggert? Was hätte dir geholfen? Welche Strategie funktioniert besonders gut? Jede Erkenntnis macht dich stabiler. Veränderung ist kein gerader Weg. Sie besteht aus Lernen, Anpassen und Weitergehen. Und genau das tust du gerade. Du entwickelst Widerstandskraft. Mit jedem Tag wird dein neues Verhalten vertrauter. Und selbst wenn Herausforderungen kommen – du bist vorbereitet. Du hast bereits bewiesen, dass du dich verändern kannst.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Fingertape-Trick + QUIZ", task: `Heute machst du deine Veränderung sichtbar. Der Fingertape-Trick erinnert dich im Alltag permanent an dein Ziel. Jedes Mal, wenn du deine Hände siehst, entsteht ein kurzer bewusster Moment. Genau dieser kleine Augenblick unterbricht den Autopiloten. Das Tape wirkt wie ein mentales Stoppschild. Gleichzeitig spürst du körperlich, dass du dich veränderst. Viele Menschen unterschätzen die Kraft visueller Erinnerungen. Doch dein Gehirn reagiert stark auf sichtbare Signale. Genau deshalb funktioniert diese Technik so gut. Sie hilft dir, aufmerksam zu bleiben – selbst in stressigen Situationen. Vielleicht fühlt sich das anfangs ungewohnt an. Doch genau diese Unterbrechung brauchst du, um alte Muster zu verändern. Jeder Blick auf das Tape erinnert dich daran, warum du begonnen hast. Du trainierst heute nicht nur Disziplin, sondern auch Selbstachtung. Denn jedes bewusste Signal sagt deinem Unterbewusstsein: Mein Ziel ist wichtig. Und je wichtiger dein Ziel für dich wird, desto stärker bleibt deine Motivation. Veränderung geschieht nicht zufällig. Sie entsteht durch viele kleine bewusste Erinnerungen. Genau dafür nutzt du heute diese Methode.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Gedankenstopp", task: `Heute lernst du, deine Gedanken bewusst zu unterbrechen. Denn viele Gewohnheiten beginnen lange bevor die Handlung passiert. Oft startet alles mit einem inneren Impuls: Nur kurz. Einmal macht nichts. Genau dort setzt du heute an. Sobald du merkst, dass solche Gedanken auftauchen, stoppst du bewusst. Sage innerlich oder laut: STOPP. Dieser klare mentale Schnitt unterbricht die automatische Gedankenspirale. Danach lenkst du deine Aufmerksamkeit sofort um. Atmen. Hände bewegen. Aufstehen. Wasser trinken. Wichtig ist, dass du nicht im alten Gedanken hängen bleibst. Du trainierst dein Gehirn heute darauf, nicht jedem Impuls zu glauben. Gedanken sind keine Befehle. Du entscheidest, worauf du reagierst. Genau das gibt dir Kontrolle zurück. Anfangs mag diese Technik ungewohnt wirken. Doch je öfter du sie anwendest, desto schneller erkennt dein Gehirn die neue Richtung. Du wirst bewusster. Ruhiger. Stabiler. Und genau dadurch verliert die alte Gewohnheit Schritt für Schritt ihre Macht. Menschen mit starker Selbstkontrolle haben nicht weniger Impulse – sie reagieren nur bewusster darauf. Genau das trainierst du heute.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Selbstmitgefühl", task: `Heute lernst du eine der wichtigsten Grundlagen echter Veränderung: freundlich mit dir selbst umzugehen. Viele Menschen versuchen, sich durch Kritik zu motivieren. Doch Druck erzeugt oft nur mehr Stress – und Stress verstärkt alte Gewohnheiten. Deshalb übst du heute Selbstmitgefühl. Sprich mit dir so, wie du mit einem guten Freund sprechen würdest. Unterstützend. Verständlich. Ehrlich. Wenn ein schwieriger Moment auftaucht, musst du dich nicht verurteilen. Du darfst menschlich sein. Veränderung bedeutet Wachstum, nicht Perfektion. Genau diese Haltung macht langfristig stark. Menschen, die freundlich mit sich umgehen, geben seltener auf. Sie stehen schneller wieder auf und bleiben motivierter. Heute erkennst du: Du bist nicht dein Fehler. Du bist ein Mensch auf dem Weg der Veränderung. Jeder kleine Fortschritt zählt. Jeder bewusste Moment zählt. Und selbst Rückschläge können dich stärker machen, wenn du daraus lernst. Selbstmitgefühl bedeutet nicht Nachgeben. Es bedeutet Unterstützung statt Selbstzerstörung. Genau dadurch wächst echte innere Stärke. Und genau deshalb verändert sich heute nicht nur dein Verhalten, sondern auch dein Verhältnis zu dir selbst.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Entkopplungsmethode üben + QUIZ", task: `Heute löst du eine alte Verbindung in deinem Gehirn auf. Vielleicht war Stress bisher automatisch mit Nägelkauen verbunden. Oder Langeweile. Oder Nervosität. Genau diese Verknüpfung trainierst du heute bewusst um. Das nennt man Entkopplung. Du lernst: Ein Gefühl muss nicht automatisch zu einer bestimmten Handlung führen. Nur weil Stress auftaucht, musst du nicht kauen. Nur weil Spannung entsteht, verlierst du nicht die Kontrolle. Genau das verändert heute dein Denken. Beobachte bewusst schwierige Gefühle, ohne sofort zu reagieren. Bleibe ruhig. Atme tief. Nutze deine neuen Strategien. Mit jeder Wiederholung schwächst du die alte Verbindung im Gehirn. Und gleichzeitig stärkst du neue Muster. Genau so entstehen langfristige Veränderungen. Vielleicht fühlt sich das heute noch anstrengend an. Doch dein Gehirn lernt bereits. Jede bewusste Unterbrechung verändert neuronale Verbindungen. Du erschaffst Schritt für Schritt ein neues Verhalten. Und genau dadurch wächst deine Freiheit. Du wirst unabhängiger von automatischen Reaktionen. Stärker. Ruhiger. Kontrollierter. Veränderung ist Training – und heute trainierst du mentale Stärke auf höchstem Niveau.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Erfolge feiern", task: `Heute geht es darum, deinen Fortschritt wirklich anzuerkennen. Viele Menschen sehen immer nur das, was noch nicht perfekt ist. Doch wahre Motivation entsteht, wenn du erkennst, wie weit du bereits gekommen bist. Schau dir deine Hände an. Vielleicht sind deine Nägel stärker geworden. Vielleicht ist deine Haut ruhiger. Vielleicht fühlst du dich kontrollierter als vor drei Wochen. Genau diese Veränderungen verdienen Aufmerksamkeit. Feiere bewusst jeden Erfolg – auch die kleinen. Denn kleine Siege verändern langfristig dein Selbstbild. Du bist nicht mehr die Person, die einfach automatisch kaut. Du bist jemand, der bewusst an sich arbeitet. Genau das ist Stärke. Vielleicht belohnst du dich heute mit etwas Besonderem. Etwas, das dich stolz macht. Nicht als Ablenkung, sondern als Anerkennung deiner Entwicklung. Menschen bleiben motivierter, wenn sie Fortschritte emotional spüren. Genau deshalb ist Feiern wichtig. Stolz verstärkt positives Verhalten. Und positives Verhalten verstärkt deine neue Identität. Du hast bereits so viel geschafft. Heute erlaubst du dir, das wirklich zu fühlen. Denn Erfolg beginnt dort, wo du dich selbst ernst nimmst.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Review – 20 Tage Rückblick", task: `Heute blickst du bewusst auf deine gesamte Reise zurück. Zwanzig Tage Veränderung liegen hinter dir. Vielleicht war nicht jeder Tag leicht. Vielleicht gab es Zweifel, Stress oder Rückschläge. Und trotzdem bist du hier. Genau das zeigt deine Stärke. Nimm dir heute Zeit und reflektiere ehrlich deinen Weg. Was hat dir am meisten geholfen? Welche Situationen waren schwierig? Welche Strategien funktionieren besonders gut? Jeder Rückblick schenkt dir Klarheit. Und Klarheit macht dich stärker für die Zukunft. Oft erkennen Menschen ihren Fortschritt erst, wenn sie bewusst zurückschauen. Deshalb sieh dir an, wie weit du gekommen bist. Deine Gedanken haben sich verändert. Deine Reaktionen haben sich verändert. Dein Bewusstsein hat sich verändert. Genau darin liegt echte Transformation. Du hast nicht nur aufgehört, an deinen Nägeln zu kauen. Du hast gelernt, bewusster mit dir selbst umzugehen. Ruhiger zu reagieren. Kontrolle aufzubauen. Darauf kannst du stolz sein. Heute erkennst du: Veränderung ist möglich – wenn du dranbleibst. Und genau das hast du bewiesen.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" },
+  { title: "Feierlicher Abschluss + QUIZ", task: `Heute endet nicht einfach nur ein Programm. Heute beginnt deine neue Identität. Einundzwanzig Tage lang hast du bewusst an dir gearbeitet. Du hast Muster erkannt, Impulse unterbrochen und neue Gewohnheiten aufgebaut. Genau dadurch bist du stärker geworden. Vielleicht erinnern dich deine Hände heute daran, wie weit du gekommen bist. Doch die größte Veränderung ist innerlich passiert. Du denkst bewusster. Du reagierst kontrollierter. Du glaubst mehr an dich selbst. Genau das ist echte Transformation. Viele Menschen wünschen sich Veränderung. Doch nur wenige gehen den Weg wirklich konsequent. Du gehörst jetzt zu denen, die handeln. Und darauf darfst du stolz sein. Heute feierst du nicht Perfektion – sondern Entwicklung. Jeder kleine Schritt hat dich hierher geführt. Jeder schwierige Moment hat dich stärker gemacht. Und das Beste daran: Deine Reise endet nicht heute. Sie beginnt neu. Denn aus einzelnen Entscheidungen ist inzwischen eine neue Identität entstanden. Du bist nicht mehr die Person, die automatisch Nägel kaut. Du bist jemand, der bewusst entscheidet. Jemand mit Kontrolle, Stärke und innerer Ruhe. Genau das hast du dir selbst bewiesen.`, videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER" }
+];
+
+// Quizze (Indizes 2,5,8,11,14,17,20)
+const quizzes = {
+  2: { question: "📏 Wie viel Millimeter wächst ein Fingernagel im MONAT durchschnittlich?", options: ["1-2 mm", "2-3 mm", "3-4 mm", "4-5 mm"], correct: 1, explanation: "✅ Richtig! Fingernägel wachsen ca. 0,5–1,2 mm pro Woche, also etwa 2–3 mm im Monat." },
+  5: { question: "🥜 Welches Nahrungsmittel ist besonders gut für starke Nägel?", options: ["Schokolade", "Karotten", "Chips", "Mandeln"], correct: 3, explanation: "✅ Mandeln liefern Biotin, Vitamin E und Zink – perfekt für Nagelwachstum." },
+  8: { question: "🦠 Warum kann eine Nagelbettentzündung oft nicht von selbst heilen?", options: ["Weil die Person weiter kaut", "Weil die Entzündung von außen unsichtbar ist", "Weil Symptome kurzzeitig sind", "Weil man die Verletzung nicht bemerkt"], correct: 0, explanation: "✅ Solange der Betroffene weiter kaut, bleiben die Wunden offen und Bakterien haben leichtes Spiel." },
+  11: { question: "🧠 Was ist der Kern der Entkopplungsmethode nach Prof. Moritz?", options: ["Willenskraft trainieren", "Handbewegung kurz vor dem Mund ablenken", "Bitteren Lack auftragen", "Medikamente nehmen"], correct: 1, explanation: "✅ Richtig! Hand zum Mund, aber kurz davor zum Ohr/Nacken umleiten – das entkoppelt den Automatismus." },
+  14: { question: "⚽ Welcher berühmte Fußballtrainer ist für sein Nägelkauen bekannt?", options: ["Jürgen Klopp", "Pep Guardiola", "Joachim Löw", "Thomas Tuchel"], correct: 2, explanation: "✅ Jogi Löw – selbst Spitzenmenschen haben diese Angewohnheit, aber du bist auf dem Weg, sie loszuwerden!" },
+  17: { question: "🔄 Wie heißt die Therapie, bei der du die Bewegung ruckartig abänderst?", options: ["Habit Reversal", "Entkopplungsmethode", "Achtsamkeitstraining", "Kognitive Umstrukturierung"], correct: 1, explanation: "✅ Entkopplungsmethode – wissenschaftlich erprobt und dein Schlüssel zum Erfolg!" },
+  20: { question: "🏆 Was ist die wichtigste Zutat für deine dauerhafte Transformation?", options: ["Perfekte Methode", "Genetik", "Glaube an dich selbst & tägliches Üben", "Viel Geld"], correct: 2, explanation: "✅ Genau! Der Glaube an dich und die tägliche, liebevolle Praxis machen den Unterschied. Du hast es geschafft!" }
+};
+
+// Meilenstein-Videos
+const milestoneVideos = [
+  { needed: 7, title: "🎉 Woche 1 geschafft!", description: "Großartig! Du hast die erste Hürde genommen. Dieses Video gibt dir neuen Schwung.", videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER", lockedText: "🔓 Erreiche 7 abgehakte Tage für dieses Video." },
+  { needed: 14, title: "🌟 Halbzeit – Woche 2 vollendet!", description: "Du bist auf dem besten Weg! Feiere deine Disziplin.", videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER", lockedText: "🔓 Erreiche 14 abgehakte Tage." },
+  { needed: 21, title: "🏆 Grand Finale – Du bist frei!", description: "21 Tage ohne Nägelkauen! Eine Riesentat. Dies ist deine wohlverdiente Ode an dich.", videoUrl: "https://www.youtube.com/embed/VIDEO_ID_PLACEHOLDER", lockedText: "🔓 Schließe alle 21 Tage ab." }
+];
+
+// Fortschrittsfunktionen
+function loadProgress() { const stored = localStorage.getItem('nagelneu_progress'); return stored ? JSON.parse(stored) : new Array(21).fill(false); }
+function saveProgress(progress) { localStorage.setItem('nagelneu_progress', JSON.stringify(progress)); updateGlobalProgress(progress); updateMilestoneVideos(progress); }
+function updateGlobalProgress(progress) { const done = progress.filter(v => v === true).length; document.getElementById('globalProgress').value = done; }
+function toggleDay(index, checked) { let progress = loadProgress(); progress[index] = checked; saveProgress(progress); }
+function resetProgress() { if (confirm("Fortschritt komplett zurücksetzen?")) { saveProgress(new Array(21).fill(false)); renderDays(); } }
+
+function updateMilestoneVideos(progress) {
+  const doneCount = progress.filter(v => v === true).length;
+  const container = document.getElementById('milestoneVideosContainer');
+  if (!container) return;
+  container.innerHTML = '';
+  for (let i = 0; i < milestoneVideos.length; i++) {
+    const mv = milestoneVideos[i];
+    const isUnlocked = doneCount >= mv.needed;
+    const div = document.createElement('div');
+    div.className = 'milestone-card';
+    if (!isUnlocked) div.classList.add('milestone-locked');
+    let videoHtml = '';
+    if (isUnlocked && mv.videoUrl && !mv.videoUrl.includes('VIDEO_ID_PLACEHOLDER')) {
+      videoHtml = `<iframe src="${mv.videoUrl}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+    } else if (isUnlocked) {
+      videoHtml = `<div class="placeholder-hint">🎥 Bitte ersetze den Platzhalter "VIDEO_ID_PLACEHOLDER" in der milestoneVideos-Liste durch eine echte YouTube-ID.</div>`;
+    } else {
+      videoHtml = `<p>🔐 ${mv.lockedText}</p>`;
+    }
+    div.innerHTML = `<h3>${mv.title} <span class="badge">${isUnlocked ? '✅ Freigeschaltet' : '🔒 Noch gesperrt'}</span></h3><p>${mv.description}</p>${videoHtml}`;
+    container.appendChild(div);
+  }
+}
+
+function attachQuiz(dayIdx, containerDiv) {
+  const quizData = quizzes[dayIdx];
+  if (!quizData) return;
+  const quizDiv = document.createElement('div');
+  quizDiv.className = 'quiz-block';
+  quizDiv.innerHTML = `<div class="quiz-question">📢 QUIZ – ${quizData.question}</div><div class="quiz-options" id="quiz-options-${dayIdx}"></div><div class="quiz-feedback" id="quiz-feedback-${dayIdx}"></div>`;
+  containerDiv.appendChild(quizDiv);
+  const optionsDiv = quizDiv.querySelector(`.quiz-options`);
+  quizData.options.forEach((opt, idx) => {
+    const optDiv = document.createElement('div');
+    optDiv.className = 'quiz-option';
+    optDiv.textContent = `${String.fromCharCode(65+idx)}. ${opt}`;
+    optDiv.addEventListener('click', () => {
+      const feedback = quizDiv.querySelector(`#quiz-feedback-${dayIdx}`);
+      if (idx === quizData.correct) {
+        feedback.innerHTML = `🎉 ${quizData.explanation}<br>✨ Super! Du bist ein NagelNEU-Profi! ✨`;
+        feedback.className = 'quiz-feedback quiz-correct';
+      } else {
+        feedback.innerHTML = `😅 Leider falsch. Richtige Antwort: ${quizData.options[quizData.correct]}. Nicht aufgeben!`;
+        feedback.className = 'quiz-feedback quiz-wrong';
+      }
+    });
+    optionsDiv.appendChild(optDiv);
+  });
+}
+
+function renderDays() {
+  const container = document.getElementById('dayList');
+  const progress = loadProgress();
+  container.innerHTML = '';
+  for (let i = 0; i < daysData.length; i++) {
+    const day = daysData[i];
+    const dayCard = document.createElement('div'); dayCard.className = 'day-card';
+    const header = document.createElement('div'); header.className = 'day-header';
+    const num = document.createElement('div'); num.className = 'day-number'; num.innerText = i + 1;
+    const title = document.createElement('div'); title.className = 'day-title'; title.innerText = day.title;
+    const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.className = 'day-check'; checkbox.checked = progress[i];
+    checkbox.addEventListener('change', () => toggleDay(i, checkbox.checked));
+    header.appendChild(num); header.appendChild(title); header.appendChild(checkbox);
+    const content = document.createElement('div'); content.className = 'day-content';
+    const task = document.createElement('div'); task.className = 'task-text'; task.innerText = day.task;
+    content.appendChild(task);
+    if (quizzes[i]) attachQuiz(i, content);
+    if (day.videoUrl && day.videoUrl.trim() !== '') {
+      const videoWrap = document.createElement('div'); videoWrap.className = 'video-wrapper';
+      if (!day.videoUrl.includes('VIDEO_ID_PLACEHOLDER')) {
+        const iframe = document.createElement('iframe'); iframe.src = day.videoUrl; iframe.allowFullscreen = true;
+        videoWrap.appendChild(iframe);
+      } else {
+        const hint = document.createElement('div'); hint.className = 'placeholder-hint';
+        hint.innerHTML = '🎥 Hier erscheint dein Video. Ersetze den Platzhalter <strong>VIDEO_ID_PLACEHOLDER</strong> durch eine echte YouTube-ID (z. B. dQw4w9WgXcQ).';
+        videoWrap.appendChild(hint);
+      }
+      content.appendChild(videoWrap);
+    }
+    header.addEventListener('click', (e) => { if (e.target !== checkbox) content.classList.toggle('show'); });
+    dayCard.appendChild(header); dayCard.appendChild(content);
+    container.appendChild(dayCard);
+  }
+  updateGlobalProgress(progress);
+  updateMilestoneVideos(progress);
+}
+
+renderDays();
+document.getElementById('resetProgressBtn').addEventListener('click', resetProgress);
+</script>
+</body>
+</html>
